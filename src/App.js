@@ -1,5 +1,6 @@
 import {useState}  from 'react';
 
+import {AiOutlineCopy} from 'react-icons/ai';
 import './App.css';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -148,7 +149,18 @@ function App() {
         resultValue = hexadecimal;
 
       if(nowState != i)
-        result.push(<p key={i}>{stateNowTarget[i]} Equivalent: {resultValue}</p>)
+        result.push(<Col key={i}>
+                      <Card
+                        className='resultcard'
+                        
+                        > 
+                          <h4>{stateNowTarget[i]} Equivalent </h4>
+                          <hr></hr>
+                          {resultValue}
+                          <AiOutlineCopy className='copy' onClick={()=>{handleCopyClipBoard(i)}}/>
+                        
+                        </Card>
+                    </Col>)
     }
 
     return result;
@@ -162,6 +174,30 @@ function App() {
     setHexadecimal('');
     setInvalid(false);
   }
+
+  
+
+  const handleCopyClipBoard = async (text) => {
+
+    let i = text;
+    var resultValue = 0;
+    if(i == 0)
+      resultValue = binary
+    else if(i == 1)
+      resultValue = octal;
+    else if(i == 2)
+      resultValue = decimal;
+    else if(i == 3)
+      resultValue = hexadecimal;
+
+
+    try {
+      await navigator.clipboard.writeText(resultValue);
+      alert('Copied to clipboard.');
+    } catch (e) {
+      alert('Copy failed');
+    }
+};
 
   function GetFrom()
   {
@@ -184,7 +220,7 @@ function App() {
             </Col>
             <Col>
             <Dropdown>
-              <Dropdown.Toggle variant="success" id="dropdown-basic">
+              <Dropdown.Toggle className='numberbutton' id="dropdown-basic">
                 {stateNowTarget[nowState]}
               </Dropdown.Toggle>
               <HandleDropDown />
@@ -192,7 +228,7 @@ function App() {
             </Dropdown>
             </Col>
             <Col>
-              <Button onClick={Clear}> Clear</Button>
+              <Button className='clearbutton' onClick={Clear}> Clear</Button>
             </Col>
           </Row>
         
@@ -216,7 +252,7 @@ function App() {
                   </InputGroup>
             </Form.Group>
           </Form>
-          <Row>
+          <Row className='resultroot'>
               <ViewResult/>
           </Row>
         </Card>

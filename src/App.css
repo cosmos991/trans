@@ -6,6 +6,28 @@
     background-color: #f8f9fa;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   }
+  
+  .resultroot
+  {
+    padding-top: 20px;
+  }
+
+  .resultcard
+  {
+    padding: 20px;
+
+    position: relative;
+  }
+
+  .copy
+  {
+    position: relative;
+    width: 20px;
+    height: 20px;
+
+    bottom: 10%;
+    left: 90%;
+  }
 
   .cardroot
   {
@@ -16,10 +38,42 @@
   {
     padding: 30px;
   }
+
+  .numberbutton
+  {
+    background-color: black;
+    border-color: white;
+  }
+
+  .numberbutton:hover
+  {
+    background-color: black;
+    border-color: white;
+  }
+
+  .clearbutton
+  {
+    background-color: black;
+    border-color: white;
+  }
+
+  .clearbutton:hover
+  {
+    background-color: black;
+    border-color: white;
+  }
   
   h2 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     margin-bottom: 20px;
+    color: #0751a1;
+    font-weight: 800;
+  }
+
+  h4
+  {
+    font-size: 1.3rem;
+    margin-bottom: 2px;
     color: #007bff;
   }
   
